@@ -57,9 +57,22 @@ class BST:
                 node.parent.right_child = None
             return
         
-#        #two child
-#        if node.left_child and node.right_child:
-                
+        #two children
+        if node.left_child and node.right_child:
+            successor = node.right_child
+            while successor.left_child:
+                successor = successor.left_child
+            node.val = successor.val
+            #successor has right child
+            if successor.right_child:
+                successor.right_child.parent = successor.parent
+                successor.parent.left_child = successor.right_child
+            #successor has no children
+            else:
+                pass
+                successor.parent.left_child = None
+            return
+            
         #one child
         if node.left_child:
             node.left_child.parent = node.parent
@@ -90,7 +103,6 @@ class BST:
         print(' ')
 
     
-    
 bst = BST()
 bst.insert(10)
 bst.insert(5)
@@ -111,4 +123,7 @@ bst.delete(6)
 bst.delete(3)
 bst.delete(8)
 bst.disp()
-#bst.delete(15)
+bst.delete(15)
+bst.disp()
+bst.delete(17)
+bst.disp()
