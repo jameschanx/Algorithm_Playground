@@ -30,10 +30,9 @@ print(k)
 print(binary_search(a, k))
 
 i, j = 0, len(a)-1
-while(True):
-    if(j < i):
-        print(None)
-        break
+            
+found = False
+while(j >= i):
     m = (i + j)//2
     if k < a[m]:
         j = m-1
@@ -41,6 +40,7 @@ while(True):
         i = m+1
     else:
         print(m)
+        found = True
         break
-    
+print(found)
 
